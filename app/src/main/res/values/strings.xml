@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">splash_screen</string>
+    <string name="action_settings">Settings</string>
+    
+    <string-array name="des">
+        <item>Click to select Designation</item>
+        <item>BEAT OFFICER</item>
+        <item>POLICE INSPECTOR</item>
+        <item>SUB-DIVISIONAL POLICE OFFICER</item>
+        <item>SUPERINTENDENT OF POLICE</item>
+    </string-array>
+</resources>
