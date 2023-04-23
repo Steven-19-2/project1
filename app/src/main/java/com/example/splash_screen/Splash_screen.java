@@ -3,6 +3,7 @@ package com.example.splash_screen;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
@@ -35,13 +36,35 @@ public class Splash_screen extends AppCompatActivity {
         textView1.setAnimation(bottom_animation);
         textView2.setAnimation(bottom_animation);
 
+        SharedPreferences preferences = getSharedPreferences("PREFERENCE", MODE_PRIVATE);
+        String first = preferences.getString("FirstTime","");
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(Splash_screen.this,login.class);
-                startActivity(intent);
-                finish();
+
+                if(first.equals("yes"))
+                {
+                    Intent intent1 = new Intent(Splash_screen.this, dashboard.class);//login.class);
+                    startActivity(intent1);
+                }
+
+                else
+                {
+
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("FirstTime","yes");
+
+                    editor.apply();
+
+                    Intent intent = new Intent(Splash_screen.this,login1.class);
+                    startActivity(intent);
+                }
+
+                  finish();//so that we dont't go back to splashscreen when pressed back
             }
         },timer);
+
+
     }
+
 }
